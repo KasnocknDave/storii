@@ -16,7 +16,6 @@
     <style type="text/css">
         .grid-stack {
             background: none;
-            border: 1px white solid;
         }
 
         textarea{
@@ -28,6 +27,7 @@
         }
 
         .delete{
+            float:left;
             margin-left:-30px;
         }
         .placeholder-content{
@@ -38,18 +38,25 @@
             text-align: center;
         }
 
+        .link > .grid-stack-item-content{
+            border: 1px black solid;
+        }
+
         img{
             width:100%;
             height:auto;
         }
+
         .grid-stack-item-content {
             color: #2c3e50;
             text-align: center;
             background: none;
-            border: 1px black solid;
             overflow-y: hidden!important;
         }
 
+        .grid-border{
+            border: 1px black dashed !important;
+        }
     </style>
 
 </head>
@@ -116,6 +123,7 @@
             this.edit = function(){
 
                 if($('#edit').text() == 'Edit'){
+                    $('.grid-stack-item-content').addClass('grid-border');
                     $('.delete').on('click',this.deleteWidget);
                     $('.delete').removeClass('hidden');
                     $('.text .grid-stack-item-content').each(function() {
@@ -133,6 +141,7 @@
                     });
                     $('#edit').text('Save');
                 }else if($('#edit').text() == 'Save'){
+                    $('.grid-stack-item-content').removeClass('grid-border');
                     $('.delete').addClass('hidden');
                     $('.text .grid-stack-item-content textarea').each(function() {
                        var t = $(this).val();
